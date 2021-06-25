@@ -1,5 +1,5 @@
-import HomePage from "./HomePage";
-import {Redirect} from "../Router/Router";
+import { Redirect } from "../Router/Router";
+import { setSessionObject } from "../../utils/session";
 /**
  * View the Register form :
  * render a register page into the #page div (formerly render function)
@@ -60,10 +60,11 @@ function RegisterPage() {
       }
       const user = await response.json(); // json() returns a promise => we wait for the data
       console.log("user authenticated", user);
-      // what to do whith the token ? To be dealt with in next step
+      // save the user into the localStorage
+      setSessionObject("user", user);
 
       // Rerender the navbar for an authenticated user : temporary step prior to deal with token
-      Navbar({isAuthenticated:true});
+      Navbar({ isAuthenticated: true });
 
       // call the HomePage via the Router
       Redirect("/");

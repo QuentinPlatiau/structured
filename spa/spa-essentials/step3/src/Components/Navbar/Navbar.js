@@ -1,12 +1,13 @@
-import { Navbar as BootstrapNavbar} from "bootstrap";
-// import {getUserSessionData} from "../utils/session.js";
+import { Navbar as BootstrapNavbar } from "bootstrap";
+import { getSessionObject } from "../../utils/session";
 // destructuring assignment
-const Navbar = (data = { isAuthenticated: false }) => {
+const Navbar = () => {
   const navbarWrapper = document.querySelector("#navbarWrapper");
   let navbar;
-  //let user = getUserSessionData();
+  // Get the user object from the localStorage
+  let user = getSessionObject("user");
 
-  if (! data.isAuthenticated) {   
+  if (!user) {
     navbar = `
   <nav class="navbar navbar-expand-lg navbar-light bg-danger">
         <div class="container-fluid">
@@ -39,8 +40,8 @@ const Navbar = (data = { isAuthenticated: false }) => {
       </nav>
   `;
     //  <a class="nav-item nav-link disabled" href="#">${user.username}</a>
-  } else { 
-  navbar = `
+  } else {
+    navbar = `
   <nav class="navbar navbar-expand-lg navbar-light bg-danger">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">e-Pizzeria</a>
@@ -62,6 +63,9 @@ const Navbar = (data = { isAuthenticated: false }) => {
               </li>    
               <li class="nav-item">
                 <a class="nav-link" href="#" data-uri="/logout">Logout</a>
+              </li>
+              <li class="nav-item">
+              <a class="nav-item nav-link disabled" href="#">${user.username}</a>
               </li>
             </ul>
           </div>

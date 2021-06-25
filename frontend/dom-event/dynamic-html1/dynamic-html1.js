@@ -53,7 +53,7 @@ page.innerHTML += htmlText;
 
 // dynamically writing HTML code through for of loop
 htmlText =
-  "<h6 class='mt-3'>3. List through forEach method and use of innerHTML</h6>";
+  "<h6>3. List through forEach method and use of innerHTML</h6>";
 htmlText += "<ul>";
 for (const ELEMENT of LIBRARIES) {
   htmlText += "<li>" + ELEMENT + "</li>";
@@ -74,7 +74,6 @@ uls.forEach((ul) => {
 
 // Same thing by working directly with DOM elements
 let listTitle = document.createElement("h6");
-listTitle.classList = "mt-3";
 listTitle.innerText = "4. List through classical for loop and createElement()";
 page.appendChild(listTitle);
 let list = document.createElement("ul");

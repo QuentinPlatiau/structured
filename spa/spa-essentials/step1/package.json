@@ -1,5 +1,5 @@
 {
-  "name": "bundler-step3",
+  "name": "bundler-step1",
   "version": "1.0.0",
   "description": "Migration vers Webpack",
   "scripts": {
@@ -22,8 +22,8 @@
     "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
+    "@popperjs/core": "^2.9.2",
     "bootstrap": "^5.0.1",
-    "customizable-analog-clock": "^1.0.1",
-    "popper": "^1.0.1"
+    "customizable-analog-clock": "^1.0.1"
   }
 }

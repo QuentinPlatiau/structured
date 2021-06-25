@@ -11,4 +11,4 @@ data/*.json
 # ignore all dist directories files (and subdirectories) from .gitignore
 dist/*
 # but (re)include specific dist directory files
-!frontend-essentials/step1/dist
+!frontend-essentials/step-1/dist

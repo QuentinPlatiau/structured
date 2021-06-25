@@ -1,4 +1,6 @@
 import HomePage from "./HomePage";
+import {Redirect} from "../Router/Router";
+import Navbar from "../Navbar/Navbar";
 /**
  * View the Login form :
  * render a login page into the #page div (formerly login function)
@@ -59,20 +61,13 @@ function LoginPage() {
       }
       const user = await response.json(); // json() returns a promise => we wait for the data
       console.log("user authenticated", user);
-      // what to do whith the token ?
+      // what to do whith the token ? To be dealt with in next step
 
-      // Rerender the navbar for an authenticated user
-      // hide the Login and Register button
-      const login = document.getElementById("loginItem");
-      login.style.display = "none";
-      const register = document.getElementById("registerItem");
-      register.style.display = "none";
-      //Show new button for authenticated users
-      const logout = document.getElementById("logoutItem");
-      logout.classList.remove("d-none");
+      // Rerender the navbar for an authenticated user : temporary step prior to deal with token
+      Navbar({isAuthenticated:true});
 
-      // call the HomePage
-      HomePage();
+      // call the HomePage via the Router
+      Redirect("/");
     } catch (error) {
       console.error("LoginPage::error: ", error);
     }

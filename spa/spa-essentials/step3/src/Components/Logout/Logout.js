@@ -1,11 +1,15 @@
 import Navbar from "../Navbar/Navbar";
-import {Redirect} from "../Router/Router";
+import { Redirect } from "../Router/Router";
+import { removeSessionObject } from "../../utils/session";
 
 const Logout = () => {
   console.log("Logout");
-  // re-render the navbar for a non-authenticated user
+  // clear the user session data from the localStorage
+  removeSessionObject("user");
+
+  // re-render the navbar (for a non-authenticated user)
   Navbar();
-  Redirect("/login"); 
+  Redirect("/login");
 };
 
 export default Logout;

@@ -50,10 +50,30 @@ class Pizzas {
 
   /**
    * Returns all pizzas
+   * @param {Object} configuration - if configuration.order exists and its value is :
+   *  - "title" : order by title : ascending (case insensitive)
+   *  - "-title" : order by title : descending (case insensitive)
    * @returns {Array} Array of pizzas
    */
-  getAll() {
+  getAll(configuration) {
     const pizzas = parse(this.jsonDbPath, this.defaultPizzas);
+    // order the array if needed
+    if (pizzas.length >= 2 && configuration && configuration.order) {
+      switch (configuration.order) {
+        case "title":
+          pizzas.sort((el1, el2) =>
+            el1.title.toLowerCase().localeCompare(el2.title.toLowerCase())
+          );
+          break;
+
+        case "-title":
+          pizzas.sort((el1, el2) =>
+            el2.title.toLowerCase().localeCompare(el1.title.toLowerCase())
+          );
+          break;
+      }
+    }
+
     return pizzas;
   }
 
@@ -79,7 +99,7 @@ class Pizzas {
   addOne(body) {
     const pizzas = parse(this.jsonDbPath, this.defaultPizzas);
 
-    // add new pizza to the menu : escape the title & content in order to protect agains XSS attacks    
+    // add new pizza to the menu : escape the title & content in order to protect agains XSS attacks
     const newPizza = {
       id: this.getNextId(),
       title: escape(body.title),

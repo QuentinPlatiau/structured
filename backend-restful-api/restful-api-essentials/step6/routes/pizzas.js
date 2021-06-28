@@ -5,10 +5,14 @@ const { authorize } = require("../utils/authorize");
 var router = express.Router();
 const pizzaModel = new Pizzas();
 
-// GET /pizzas : read all the pizzas from the menu
+/**
+ * GET /pizzas : read all the pizzas from the menu
+ * /pizzas?order=title : order by title : ascending
+ * /pizzas?order=-title : order by title : descending
+ */
 router.get("/", function (req, res) {
   console.log("GET /pizzas");
-  return res.json(pizzaModel.getAll());
+  return res.json(pizzaModel.getAll({ order: req.query.order }));
 });
 
 // GET /pizzas/{id} : Get a pizza from its id in the menu

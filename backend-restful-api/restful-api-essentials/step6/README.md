@@ -16,5 +16,3 @@
 - Nous avons choisi de sécuriser que deux opérations sur des ressources : la lecture des comptes utilisateurs (pour tout utilisateur connecté) et la création de pizzas (pour l'utilisateur pizzaadmin uniquement).
 - Le mécanisme de JWT est robuste pour gérer l'authentification et l'autorisation d'opération sur des ressources.
 - Il nous reste maintenant à consommer cette RESTFul api par le frontend. => step4 du frontend (/demo/bundler/webpack-basics/step4).
-- Bien sûr, cette API ne gère pas la persistence des données. A chaque démarrage de l'API, les données qui avaient été ajoutées seront perdues.
-- La persistance des données pourrait être ajouté dans les futures étapes. Elle pourraient se faire soit via un fichier .json ou via une base de données.

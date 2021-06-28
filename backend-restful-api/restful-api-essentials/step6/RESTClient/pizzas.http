@@ -17,6 +17,13 @@ Content-Type: application/json
 ### Read all pizzas
 GET http://localhost:3000/pizzas
 
+### Read all pizzas, order by title : ascending
+GET http://localhost:3000/pizzas?order=title
+
+
+### Read all pizzas, order by title : descending
+GET http://localhost:3000/pizzas?order=-title
+
 ### Read pizza identified by 2
 GET http://localhost:3000/pizzas/2
 

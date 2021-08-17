@@ -1,7 +1,7 @@
 {
-  "name": "bundler-step1",
+  "name": "frontend-essentials-step-1",
   "version": "1.0.0",
-  "description": "Migration vers Webpack",
+  "description": "Migration partielle vers Webpack",
   "main": "index.js",
   "scripts": {
     "dev": "webpack --mode development",

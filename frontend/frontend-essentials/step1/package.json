@@ -1,7 +1,7 @@
 {
-  "name": "bundler-step3",
+  "name": "frontend-essentials-step1",
   "version": "1.0.0",
-  "description": "Migration vers Webpack",
+  "description": "Webpack - utilisation d'un boilerplate et ajout d'une librairie",
   "scripts": {
     "dev": "webpack --mode development",
     "build": "webpack --mode production",

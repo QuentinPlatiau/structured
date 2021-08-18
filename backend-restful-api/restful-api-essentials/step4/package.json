@@ -1,6 +1,6 @@
 {
-  "name": "restful-api-step4",
-  "description": "RESTful API to deal with a pizzeria : step 4",
+  "name": "restful-api-essentials-step4",
+  "description": "RESTful API : Authentification d’utilisateurs & autorisation des opérations de MàJ de données",
   "version": "0.0.0",
   "private": true,
   "scripts": {

@@ -1,6 +1,6 @@
 {
-  "name": "restful-api-step6",
-  "description": "RESTful API to deal with a pizzeria : step 6",
+  "name": "restful-api-essentials-step7",
+  "description": "RESTful API : Gestion des CORS via l’autorisation d’une nouvelle origine",
   "version": "0.0.0",
   "private": true,
   "scripts": {

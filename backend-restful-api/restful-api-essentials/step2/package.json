@@ -1,6 +1,6 @@
 {
-  "name": "restful-api-step2",
-  "description": "RESTful API to deal with a pizzeria : step 2",
+  "name": "restful-api-essentials-step2",
+  "description": "RESTful API : Gestion de la persistance des données dans un fichier .json",
   "version": "0.0.0",
   "private": true,
   "scripts": {

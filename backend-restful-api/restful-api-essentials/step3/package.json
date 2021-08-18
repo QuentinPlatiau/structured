@@ -1,6 +1,6 @@
 {
-  "name": "restful-api-step2",
-  "description": "RESTful API to deal with a pizzeria : step 3",
+  "name": "restful-api-essentials-step3",
+  "description": "RESTful API : Structuration du code",
   "version": "0.0.0",
   "private": true,
   "scripts": {

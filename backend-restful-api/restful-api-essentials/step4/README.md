@@ -1,20 +1,22 @@
-# Step4 : sécurisation d'une API à l'aide de l'authentification et l'autorisation via JWT
+# Création d’une RESTful API pour une pizzeria : Step 4 – Authentification d’utilisateurs & autorisation des opérations de MàJ de données
 ## How to ? création de token signé à l'aide d'un secret
-- Dans notre API permettant de lire des pizzas, ou d'en ajouter, il n'est pas normal que n'importe qui puisse ajouter des pizzas. On veut que seul le compte adminpizza puisse ajouter des pizza, et que tout utilisateur authentifié puisse voir la liste des comptes utilisateurs. Dans ce step 3, on va créer un token sécurisé, un JWT, contenant une signature protégée par un secret, et on ajoutera le username dans le token afin de sauvegarder les données de session côté client. Ainsi, seuls les utilsateurs ayant fourni un token valide auront accès aux ressources sécurisées, et l'on pourra même autoriser l'accès à un ou plusieurs username particulier(s).
-- Au step2, nous avions créé un token qui n'était pas vraiment sécurisé. Dans ce step3, nous allons transformer ce token en JWT, avec  un secret "ilovemypizza!" pour la signature, le username comme donnée de session que l'on mettra dans le payload du token, et une durée de vie du token de 24h (LIFETIME_JWT dans le code).
-- Installation du package jsonwebtoken permettant de créer un JWT : npm i jsonwebtoken
-- Utilisation de jsonwebtoken pour créer le token : voir le code dans /routes/auths.js pour la méthode jwt.sign() 
-- Amélioration de l'autorisation des opérations sur les ressources : voir le code dans /routes/pizzas.js et /routes/users.js pour voir comment vérifier que le token est valide.
-- Afin de sécuriser l'opération d'ajout d'une pizza par pizzaadmin seulement, dans /routes/pizzas.js, le code a été écrit sans souci de structurer son code (et sans souci de duplication de variables, comme jwtSecret) : appel de la méthode jwt.verify() pour vérifier la signature et parser les infos qui sont dans le payload (token.username).
-- Dans /routes/users.js, le code a été restructuré. On a créé un middleware d'autorisation des ressources, que l'on appelle avant de traiter l'accès à l'opération protégée sur des ressources (lecture des comptes utilisateurs /GET auths/users). Cela a le même genre d'effets que la façon dont nous avons protégé l'opération de création d'une pizza. Mais le code est plus facilement réutilisable et lisible. 
-- Comme la liste d'utilisateur potentiellement authentifiable doit être accédée dans plusieurs module (/utils/auths.js et /routes/auths.js), nous avons restructuré le code pour que cette liste puisse être importée là où nécessaire. Cette liste est maintenant exportée par /utils/auths.js et sera utilisée là où nécessaire. 
-- Si ça n'est pas fait, installation des packages associés à l'API : npm install
-- Démarrer l'API (par défaut elle est configurée sur le port 3000 au sein de /bin/www) : npm start 
-- N'hésitez pas à explorer les requêtes pour voir comment l'API réagit => clic sur Send Request au sein de /tests/auths.http ou /tests/pizzas.http.
+- Dans notre API permettant de lire des pizzas, ou d'en ajouter, il n'est pas normal que n'importe qui puisse ajouter, effacer ou mettre à jour des pizzas. On souhaiterait que seul le compte `admin` puisse réaliser des opérations d'écriture sur des pizzas. Dans ce step 3, on va créer un token sécurisé, un JWT, contenant une signature protégée par un secret, et on ajoutera le username de l'utilisateur authentifié dans le payload du token afin de sauvegarder les données de session côté client. Ainsi, seul `admin`, ayant fourni un token valide, aura accès aux opérations sur les ressources sécurisées.
+On pourra, plus tard, autoriser l'accès d'un ou plusieurs usernames supplémentaire(s) à certaines opérations.
+- Dans ce step 3, nous allons créer un JWT token via : 
+    - un secret "ilovemypizza!" pour la signature
+    - le username comme donnée de session que l'on mettra dans le payload du token,
+    - une durée de vie du token de 24h (`LIFETIME_JWT` dans le code).
+- Installation du package `jsonwebtoken` permettant de créer un JWT ou vérifier un JWT : `npm i jsonwebtoken`
+- Afin de structurer le code, toute la logique de gestion des utilisateurs et de leurs token a été mise dans le "Fat Model" `/model/users.js`. Les méthodes `login` et `register` permettent de vérifier les données d'authentification d'un utilisateur, ses "credentials", et de générer un token si tout est OK. 
+- Utilisation de `jsonwebtoken` pour créer le token : voir l'appel de la méthode `jwt.sign()` dans `/model/users.js` 
+
+- Afin de sécuriser les opérations d'écriture de pizza (ajout, effacer et mise à jour) par `pizza` seulement, dans `/routes/pizzas.js`, la méthode `verifyTokenAndAdmin` de `/utils/authorize.js` est utilisée : appel de la méthode `jwt.verify()` pour vérifier la signature et parser les infos qui sont dans le payload (`token.username`) du token.
+
+## Exécution de l'API et tests
+- N'oubliez pas de démarrer l'API : `npm run debug`.
+- N'hésitez pas à explorer les requêtes pour voir comment l'API réagit => clic sur `Send Request` au sein de `/tests/auths.http` ou `/tests/pizzas.http`.
 # Conclusion
 - Nous avons une RESTFul API entièrement testée et développée indépendemment du frontend.
-- Nous avons choisi de sécuriser que deux opérations sur des ressources : la lecture des comptes utilisateurs (pour tout utilisateur connecté) et la création de pizzas (pour l'utilisateur pizzaadmin uniquement).
+- Nous avons actuellement choisi de sécuriser toutes les opérations d'écriture sur des ressources de type pizza. Cela pourra être changé dans une prochaine étape pour permettre, par exemple, de lire les données des comptes utilisateurs pour tout utilisateur authentifié.
 - Le mécanisme de JWT est robuste pour gérer l'authentification et l'autorisation d'opération sur des ressources.
-- Il nous reste maintenant à consommer cette RESTFul api par le frontend. => step4 du frontend (/demo/bundler/webpack-basics/step4).
-- Bien sûr, cette API ne gère pas la persistence des données. A chaque démarrage de l'API, les données qui avaient été ajoutées seront perdues.
-- La persistance des données pourrait être ajouté dans les futures étapes. Elle pourraient se faire soit via un fichier .json ou via une base de données.
+- Le code, concernant l'autorisation aux ressources, pourrait être mieux structuré afin d'éviter des duplications. Actuellement, pour chaque opération sur une ressource nécessitant une autorisation, on va chercher le token dans le header de la requête, puis, en fonction du résultat de la requête on envoie ou pas un code de status d'erreur.

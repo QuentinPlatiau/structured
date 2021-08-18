@@ -1,6 +1,6 @@
 {
-  "name": "restful-api-step8",
-  "description": "RESTful API to deal with a pizzeria : step 8",
+  "name": "restful-api-essentials-step8",
+  "description": "RESTful API : Sauvegarde du username et du token au sein d’un cookie côté client",
   "version": "0.0.0",
   "private": true,
   "scripts": {

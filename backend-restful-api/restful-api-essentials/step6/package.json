@@ -1,6 +1,6 @@
 {
-  "name": "restful-api-step6",
-  "description": "RESTful API to deal with a pizzeria : step 6",
+  "name": "restful-api-essentials-step6",
+  "description": "RESTful API : Sécurisation via le hachage des passwords et protection contre attaques XSS",
   "version": "0.0.0",
   "private": true,
   "scripts": {

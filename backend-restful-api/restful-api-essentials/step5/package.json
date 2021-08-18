@@ -1,6 +1,6 @@
 {
-  "name": "restful-api-step5",
-  "description": "RESTful API to deal with a pizzeria : step 5",
+  "name": "restful-api-essentials-step5",
+  "description": "RESTful API : Refactor via la création d’un middleware d’autorisation JWT",
   "version": "0.0.0",
   "private": true,
   "scripts": {

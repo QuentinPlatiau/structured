@@ -1,7 +1,7 @@
 {
-  "name": "spa-step2",
+  "name": "spa-essentials-step2",
   "version": "1.0.0",
-  "description": "Migration vers Webpack",
+  "description": "SPA : Gestion du routage des pages et composants",
   "scripts": {
     "dev": "webpack --mode development",
     "build": "webpack --mode production",

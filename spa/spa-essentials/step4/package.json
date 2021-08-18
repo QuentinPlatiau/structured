@@ -1,7 +1,7 @@
 {
-  "name": "spa-step4",
+  "name": "spa-essentails-step4",
   "version": "1.0.0",
-  "description": "Migration vers Webpack",
+  "description": "SPA - Formulaire d’ajout de pizzas consommant l’opération d’ajout de la RESTful API de la pizzeria protégée par JWT auths",
   "scripts": {
     "dev": "webpack --mode development",
     "build": "webpack --mode production",

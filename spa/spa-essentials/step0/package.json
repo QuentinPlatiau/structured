@@ -1,7 +1,7 @@
 {
-  "name": "spa-step0",
+  "name": "spa-essentials-step0",
   "version": "1.0.0",
-  "description": "Get /pizzas",
+  "description": "SPA : Intégration de la RESTful API de la pizzeria et problème de CORS",
   "scripts": {
     "dev": "webpack --mode development",
     "build": "webpack --mode production",

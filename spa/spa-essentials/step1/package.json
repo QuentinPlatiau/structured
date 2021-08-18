@@ -1,7 +1,7 @@
 {
-  "name": "bundler-step1",
+  "name": "spa-essentials-step1",
   "version": "1.0.0",
-  "description": "Migration vers Webpack",
+  "description": "SPA : Consommation d’opérations non protégées de la RESTful API grâce à un proxy",
   "scripts": {
     "dev": "webpack --mode development",
     "build": "webpack --mode production",

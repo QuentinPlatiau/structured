@@ -4,7 +4,7 @@
 - Le Step -2, Step -1 et Step 0 de ce tutoriel "Création d’un frontend pour une pizzeria" expliquent donc comment le boilerplate du cours a été créé. Celui-ci est donné ici : https://github.com/e-vinci/js-basic-boilerplate.git
 
 ## Démarrer votre application à partir du boilerplate du cours
-- Clone du repo associé au boilerplate : `git clone https://github.com/e-vinci/js-basic-boilerplate.git`
+- Clone du repo associé au boilerplate : `git clone https://github.com/e-vinci/js-basic-boilerplate.git` ou `git clone https://github.com/e-vinci/js-basic-boilerplate.git nom-de-votre-projet` pour créer votre projet nommé `nom-de-votre-projet`.
 - Installation des dépendances : 
 ```shell
 cd js-basic-boilerplate # (ou le nom donné au répertoire de votre projet)

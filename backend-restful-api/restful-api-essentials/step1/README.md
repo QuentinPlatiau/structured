@@ -1,6 +1,6 @@
 # Création d’une RESTful API pour une pizzeria : Step 1 – CRUD pizzas : gestion de données non persistantes, code peu structuré
 ## How to ? Création de l'application sans authentification
-- A l'aide d'un générateur d'application, création d'une application Express, sans vues, dans le répertoire de projet `/step1` (NB : c'est lors de la création d'une MPA que les vues sont utilisée) : `npx express-generator --no-view step1 --no-view`
+- A l'aide d'un générateur d'application, création d'une application Express, sans vues, dans le répertoire de projet `/step1` (NB : c'est lors de la création d'une MPA que les vues sont utilisée) : `npx express-generator --no-view step1`
 NB : le `--no-view` permet de ne pas avoir à effacer certains répertoires inutiles à une SPA comme `/views`.
 - NB : Pour une API qui ne possède pas de serveur de fichiers statiques, on a pas besoin d'avoir un répertoire `public`, ni d'un serveur statique. On peut donc effacer le répertoire `/public` et supprimer le middleware de serveur de fichiers statiques : 
 ```js

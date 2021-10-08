@@ -3,7 +3,7 @@
  * At this step: this is only a static component...
  */
 
-const HomePage = async () => {
+const HomePage = () => {
   // reset #page div
   const pageDiv = document.querySelector("#page");
   pageDiv.innerHTML = `<h3 class="text-white pt-5">C'est ici que nous allons afficher le menu des pizzas (prochaines étapes)</h3>`;

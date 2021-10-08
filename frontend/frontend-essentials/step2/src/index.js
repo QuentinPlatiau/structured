@@ -12,7 +12,7 @@ Header();
 /// Improve the navbar : deal with the click events on navbar items
 Navbar();
 
-// call the asynchrone function to print the list of pizzas
+// Call the HomePage
 HomePage();
 
 // Improve the header with dynamic HTML generation

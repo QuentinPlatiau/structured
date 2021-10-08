@@ -16,7 +16,7 @@ const Header = () => {
   // Create the audio and load the file via webpack file-loader
   const myPlayer = `
   <div class="text-center">
-  <audio id="audioPlayer" controls autoplay>
+  <audio id="audioPlayer" controls>
         <source
           src="${music}"
           type="audio/mpeg"

@@ -70,6 +70,8 @@ router.post("/", function (req, res) {
     title: req.body.title,
     content: req.body.content,
   };
+
+  
   menu.push(newPizza);
   // return the new pizza
   return res.json(newPizza);

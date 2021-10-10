@@ -1,8 +1,63 @@
+### Definition of a file variable : https://github.com/Huachao/vscode-restclient#file-variables
 @baseUrl = http://localhost:3000
 
-######### NORMAL OPERATION  ###########
+### Read all pizzas
+GET http://localhost:3000/pizzas
 
-### Login the default admin & define a request variable
+### Read pizza identified by 2
+GET http://localhost:3000/pizzas/2
+
+### Try to create a pizza without JWT
+POST http://localhost:3000/pizzas
+Content-Type: application/json
+
+{
+    "title":"Magic Green",
+    "content":"Epinards, Brocolis, Olives vertes, Basilic"
+}
+
+### Try to login an unknown user
+### Documentation to define a request variable  : https://github.com/Huachao/vscode-restclient#request-variables)
+# @name unknownUser
+POST {{baseUrl}}/auths/login
+Content-Type: application/json
+
+{
+    "username":"unknown",
+    "password":"admin"
+}
+### Try to create a pizza with unknown user
+POST {{baseUrl}}/pizzas
+Content-Type: application/json
+Authorization: {{unknownUser.response.body.token}}
+
+{
+    "title":"Magic Purple",
+    "content":"JWT, Brocolis, Olives vertes, Basilic"
+}
+
+### Login the manager (ensure that he is first registered)
+# @name manager
+POST {{baseUrl}}/auths/login
+Content-Type: application/json
+
+{
+    "username":"manager",
+    "password":"manager"
+}
+
+### Try to create a pizza with manager
+POST {{baseUrl}}/pizzas
+Content-Type: application/json
+Authorization: {{manager.response.body.token}}
+
+{
+    "title":"Magic Purple",
+    "content":"JWT, Brocolis, Olives vertes, Basilic"
+}
+
+### Login the default admin & define a request variable 
+### More documentation : https://github.com/Huachao/vscode-restclient#request-variables)
 # @name admin
 POST {{baseUrl}}/auths/login
 Content-Type: application/json
@@ -14,14 +69,7 @@ Content-Type: application/json
 ### get the admin token
 @adminToken = {{admin.response.body.token}}
 
-### Read all pizzas
-GET http://localhost:3000/pizzas
-
-### Read pizza identified by 2
-GET http://localhost:3000/pizzas/2
-
-
-### Create a pizza
+### Create a pizza with admin
 POST {{baseUrl}}/pizzas
 Content-Type: application/json
 Authorization: {{adminToken}}
@@ -44,19 +92,11 @@ Authorization: {{adminToken}}
 DELETE http://localhost:3000/pizzas/2
 Authorization: {{adminToken}}
 
-######### ERROR OPERATION  ###########
+######### OTHER ERROR OPERATION  ###########
 
 ### Read pizza which does not exists
 GET http://localhost:3000/pizzas/100
 
-### Create a pizza without JWT
-POST http://localhost:3000/pizzas
-Content-Type: application/json
-
-{
-    "title":"Magic Green",
-    "content":"Epinards, Brocolis, Olives vertes, Basilic"
-}
 
 ### Update the pizza identified by 2 without JWT
 PUT http://localhost:3000/pizzas/2

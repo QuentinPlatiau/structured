@@ -15,6 +15,7 @@ On pourra, plus tard, autoriser l'accès d'un ou plusieurs usernames supplément
 ## Exécution de l'API et tests
 - N'oubliez pas de démarrer l'API : `npm run debug`.
 - N'hésitez pas à explorer les requêtes pour voir comment l'API réagit => clic sur `Send Request` au sein de `/tests/auths.http` ou `/tests/pizzas.http`.
+- Si vous avez besoin de plus d'information sur comment récupérer des données suite à une requête faite via REST Client, n'hésitez pas à lire la documentation : https://github.com/Huachao/vscode-restclient
 # Conclusion
 - Nous avons une RESTFul API entièrement testée et développée indépendemment du frontend.
 - Nous avons actuellement choisi de sécuriser toutes les opérations d'écriture sur des ressources de type pizza. Cela pourra être changé dans une prochaine étape pour permettre, par exemple, de lire les données des comptes utilisateurs pour tout utilisateur authentifié.

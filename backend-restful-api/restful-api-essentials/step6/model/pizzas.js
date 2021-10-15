@@ -1,6 +1,7 @@
 "use strict";
 const { parse, serialize } = require("../utils/json");
 var escape = require("escape-html");
+const escapeHTML = require("escape-html");
 
 const jsonDbPath = __dirname + "/../data/pizzas.json";
 
@@ -135,10 +136,16 @@ class Pizzas {
     const pizzas = parse(this.jsonDbPath, this.defaultPizzas);
     const foundIndex = pizzas.findIndex((pizza) => pizza.id == id);
     if (foundIndex < 0) return;
-    // create a new object based on the existing pizza - prior to modification -
-    // and the properties requested to be updated (those in the body of the request)
-    // use of the spread operator to create a shallow copy and repl
-    const updatedPizza = { ...pizzas[foundIndex], ...body };
+    // create a new object based on the existing pizza
+    // Escape all dangerous potential new chars
+    const updatedPizza = { ...pizzas[foundIndex] };
+    for (const key in body) {
+      if (Object.hasOwnProperty.call(body, key)) {
+        const element = body[key];
+        updatedPizza[key] = escape(element);
+      }
+    }
+
     // replace the pizza found at index : (or use splice)
     pizzas[foundIndex] = updatedPizza;
 

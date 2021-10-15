@@ -44,7 +44,7 @@ Content-Type: application/json
 Authorization: {{adminToken}}
 
 {
-    "title":"Magic Green 2"
+    "title":"Magic Green 2 <Script>"
 }
 
 ### Delete pizza identified by 2

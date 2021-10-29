@@ -13,7 +13,7 @@ Header();
 Navbar();
 
 // Render the HomePage
-// HomePage();
+// HomePage(); // this is now the Router's role to load the HomePage when the frontend is loaded
 
 // Improve the header with dynamic HTML generation
 Footer();

@@ -1,6 +1,5 @@
 import { Navbar as BootstrapNavbar } from "bootstrap";
-import { getSessionObject } from "../../utils/session";
-// destructuring assignment
+import { getSessionObject } from "../../utils/session"; // destructuring assignment ("{}": see MDN for more info ; )
 const Navbar = () => {
   const navbarWrapper = document.querySelector("#navbarWrapper");
   let navbar;
@@ -39,7 +38,6 @@ const Navbar = () => {
         </div>
       </nav>
   `;
-    //  <a class="nav-item nav-link disabled" href="#">${user.username}</a>
   } else {
     navbar = `
   <nav class="navbar navbar-expand-lg navbar-light bg-danger">

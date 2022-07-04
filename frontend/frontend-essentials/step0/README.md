@@ -81,7 +81,8 @@ Pour ce faire, nous allons utiliser ESLint (cet outil est aussi utilisé par Fac
 développement sans framework, côté browser et que l'on souhaite appliquer un JS style guide 
 d'Airbnb afin d'avoir des règles de programmation qui correspondent à ce qui est fait 
 en React.
-- Airbnb JavaScript Syle Guide est donné ici : https://github.com/airbnb/javascript
+- Installation du package pour utiliser le Airbnb JavaScript Syle Guide : `npm i eslint-config-airbnb-base -D`.
+Airbnb JavaScript Syle Guide est donné ici : https://github.com/airbnb/javascript.
 - Installation du plugin au sein de Webpack pour utiliser ESLint : `npm install eslint-webpack-plugin -D`
 - Configuration de `webpack.config.js`, ajout de :
 ```

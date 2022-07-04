@@ -16,6 +16,11 @@ vers
 ```html
 <script src="./main.js"></script>
 ```
+- A ce stade-ci, nous ne souhaitons pas gérer de feuille de style, car cela impliquerait de 
+configurer Webpack pour charger du CSS. Afin donc de focaliser sur l'apprentissage du rôle 
+de Webpack, nous avons fait quelque de peu recommandé : tout le style identifié à l'étape 
+précédente au sein du fichier **/stylesheet/style.css** a été directement intégré dans 
+le fichier **index.html** à l'aide des propriétés **style** des éléments HTML.
 - Créer le fichier de configuration du projet : `npm init -y`
 - Installer les packages pour Webpack : `npm i webpack webpack-cli -D`
 - Lancer un build via le CLI (command line interface) : `npx webpack`

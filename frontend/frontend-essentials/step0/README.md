@@ -43,11 +43,18 @@ Il est à noter que grâce à la génération automatique de `dist/index.html` s
 ```js
 import "./stylesheets/style.css";
 ```
-- Chargement d'une image dans un fichier JS (grâce aux types de Asset Modules : `asset/resource` ou autre) dans `/src/index.js` (ou tout autre module.js) : 
+- Chargement d'une photo via le CSS : il n'y a rien de plus à faire, du moment que la photo est dans `/src`, le Asset Module reconnaît la photo localement et va remplacer le chemin final de la photo lorsque le projet a été "build" (ou "bundlé" ; ). 
+Par exemple, dans style.css : 
+```css
+background-image : url(../img/pizza.jpg);
+```
+- Chargement d'un fichier (image ou autre) directement dans un fichier .html : cela est possible grâce à l'installation et configuration du module `html-loader` : Webpack émet le fichier dans le "output directory" (`/dist`) et remplace `src` avec le chemin final vers le fichier
+- Chargement d'un fichier son : idem que pour une photo, voir le code !
+- Même si cette application ne contient pas encore de chargement dynamique d'image via du JS, Webpack a été configuré pour pouvoir le traiter. Cela serait possible grâce aux types de Asset Modules : `asset/resource` ou autre. Par exemple, on pourrait créer une image, le logo dans `/src/index.js` (ou tout autre module) : 
 ```js
 import logo from "./img/js-logo.png";
 ```
-- `asset/resource` va transformer le chemin de la photo vers le chemin de la photo qui se trouvera dans le répertoire de sortie (`/dist`) => utilisation de logo comme src d'une image : 
+- `asset/resource` va transformer le chemin de la photo vers le chemin de la photo qui se trouvera dans le répertoire de sortie (`/dist`). Pour utiliser le logo comme src d'une image : 
 ```js
 footerPhoto.src = logo;
 ```
@@ -65,18 +72,49 @@ background-image : url(../img/pizza.jpg);
 - Démarrer l' application : `npm start`
 - Le bundle a été généré (`bundle.js`) ainsi que `index.html`, mais tout est géré par le serveur de développement, il n'y a rien de mis dans `/dist` !
 
-- 
-## Migration de Bootstrap en CDN vers Bootstrap géré de façon moderne par Webpack
-- Nous ne souhaitons plus charger de librairie à l'aide de `<script src="...">` mais directement via Webpack. 
-- Installation de Bootstrap et dépendances :  `npm i bootstrap @popperjs/core`
-- Chargement du CSS de Bootstrap (généralement au sein de `/src/index.js`) : 
-```js
-import 'bootstrap/dist/css/bootstrap.min.css';
+## Ajout et configuration d'un linter et d'un formateur
+- Nous souhaitons ajouter un outil qui permette de détecter des erreurs de programmation lors 
+de l'écriture de nos scripts.
+Pour ce faire, nous allons utiliser ESLint (cet outil est aussi utilisé par Facebook au sein d'app React).
+- Installation du linter : `npm install eslint -D`.
+- Configuration du linter et création d'un fichier de config nommé `.eslintrc.js` : `npm init @eslint/config`. Une suite de questions sont pausées. Ici on a précisé que l'on fait du 
+développement sans framework, côté browser et que l'on souhaite appliquer un JS style guide 
+d'Airbnb afin d'avoir des règles de programmation qui correspondent à ce qui est fait 
+en React.
+- Airbnb JavaScript Syle Guide est donné ici : https://github.com/airbnb/javascript
+- Installation du plugin au sein de Webpack pour utiliser ESLint : `npm install eslint-webpack-plugin -D`
+- Configuration de `webpack.config.js`, ajout de :
 ```
-- Chargement du JS d'un composant Bootstrap au sein d'un script (par exemple, afin que la barre de navigation puisse s'étendre lors d'un clic) :
-```js
-import { Navbar as BootstrapNavbar} from "bootstrap";
+const ESLintPlugin = require('eslint-webpack-plugin');
+
+module.exports = {
+  // ...
+  plugins: [new ESLintPlugin()],
+  // ...
+};
 ```
+- A ce stade-ci, lors du lancement de webpack, celui-ci check les règles de codage.
+Si certaines ne sont pas respectée, le code ne compile pas.
+- Pour bénéficier de plus de feedback sur le code, installez l'extension ESLint au sein de 
+VS Code. Vous ne devez plus attendre la compilation pour avoir du feedback sur votre code, cela 
+se fait dès l'écriture ! Vous avez même des propositions de "Quick fix" !
+- Pour formater votre code, nous vous conseillons d'installer l'extension **Prettier**.
+- Vous souhaitez reformater votre code en accord avec le linter ?
+Par défaut, l'extension Prettier de VS Code n'est pas configuré pour appliquer le style 
+d'Airbnb. Il y a notamment des soucis avec les Strings : tout devient des double quotes au lieu 
+de single quotes...
+- Pour configurer prettier basé sur Airbnb JS style guide   : 
+  - installer un package fournissant les paramètres de config : `npm i prettier-airbnb-config -D`
+  - utiliser ces paramètres de configuration au sein d'un fichier `.prettierrc.js` :
+```
+module.exports = {
+  ...require('prettier-airbnb-config'),
+  printWidth: 120
+};
+```
+- Certaines règles d'Airbnb sont difficilement applicables. La 1ère est que sous Windows ou Linux, les sauts à la lignes sont faits différemment. On souhaite laisser cela acceptable. De plus, on souhaite aussi permettre le hoisting des fonctions. Afin de rendre le code plus lisible, on aimerait pouvoir utiliser une fonction, même si ça définition est donnée plus loin dans le script. Nous avons donc assoupli ces deux règles, 'linebreak-style' & 'no-use-before-define', au sein du fichier de configuration du linter **.eslintrc.js**.
+
+
 ## Conclusion : pourquoi avoir fait tout ça ? 
 - A l'étape suivante, nous allons pouvoir intégrer n'importe quel package du monde node.js ! C'est une gestion incroyable et simple des dépendances et des assets !
 - Sachez que quand vous faites un build pour la production (`npm run build`), le bundle est optimisé pour la production ! Cela signifie que tous vos commentaires peuvent être enlevés de vos scripts, tous les espaces sont enlevés, toutes les dépendances non utilisées sont retirées, certains fichiers sont convertis en base64... Dès lors, vous avez un bundle des plus compacts !

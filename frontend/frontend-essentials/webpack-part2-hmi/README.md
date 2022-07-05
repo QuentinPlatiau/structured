@@ -1,8 +1,9 @@
-# Création d’un frontend pour une pizzeria : Step 0 : migration complète du frontend classique vers un frontend moderne utilisant Webpack
+# Création d’un frontend pour une pizzeria : webpack-part2-hmi : migration complète du frontend classique vers un frontend moderne utilisant Webpack
 
 ## Introduction
 - Pour rappel, généralement, quand vous allez créer un frontend tournant sous Webpack, vous allez utiliser un boilerplate fournissant déjà un fichier `package.json` contenant tous les packages à installer, ainsi qu'une configuration de Webpack (`webpack.config.js`). 
 - Ici, nous vous expliquons tout ce qui a été fait pour créer ces démos, afin de vous permettre de comprendre les mécanismes de Webpack.
+
 ## How to ? Configuration de Webpack
 
 - Mise à jour du fichier `package.json` pour ajouter "start" : 

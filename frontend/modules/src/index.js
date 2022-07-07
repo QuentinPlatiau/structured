@@ -1,51 +1,36 @@
-// Import Bootstrap CSS
-import "bootstrap/dist/css/bootstrap.min.css";
-// Custom styles
-import "./stylesheets/main.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './stylesheets/main.css';
 
-// This is the entry point to your app : add all relevant import and custom code
+// import from default export (you could give the name you want)
+import Car from './domain/Car';
+// import from named export
+import { setLayout } from './utils/render';
 
-// import default export (you could give the name you want)
-import Car from "./domain/Car.js";
-// import named export
-import { setLayout } from "./utils/render.js";
-
-const HEADER_TITLE = "JavaScript & Node.js full course";
-const PAGE_TITLE = "Demo : ES6 Modules";
-const FOOTER_TEXT = "Happy learning : )";
+const HEADER_TITLE = 'JavaScript & Node.js full course';
+const PAGE_TITLE = 'Demo : ES6 Modules';
+const FOOTER_TEXT = 'Happy learning : )';
 
 setLayout(HEADER_TITLE, PAGE_TITLE, FOOTER_TEXT);
 
-let btn = document.querySelector("#btn");
-let page = document.querySelector("#page");
+const btn = document.querySelector('#btn');
+const page = document.querySelector('#page');
 
-let raphael = {
-  firstname: "Raphael",
-  lastname: "Baroni",
-  sayHello: () => "Hi everyone !",
+const raphael = {
+  firstname: 'Raphael',
+  lastname: 'Baroni',
+  sayHello: () => 'Hi everyone !',
 };
 
-let sandra = {};
-sandra.firstname = "Sandra";
-sandra.lastname = "Parisi";
+const sandra = {};
+sandra.firstname = 'Sandra';
+sandra.lastname = 'Parisi';
 
-let dacia = new Car("Dacia", "Sandero");
+const dacia = new Car('Dacia', 'Sandero');
 
-btn.addEventListener("click", function () {
-  console.log(
-    "click::sayHello(): ",
-    raphael.firstname,
-    " :",
-    raphael.sayHello()
-  );
+btn.addEventListener('click', () => {
+  console.log('click::sayHello(): ', raphael.firstname, ' :', raphael.sayHello());
 
-  console.log(
-    "click: get object properties: ",
-    sandra.firstname,
-    sandra.lastname,
-    sandra["firstname"],
-    sandra["lastname"]
-  );
+  console.log('click: get object properties: ', sandra.firstname, sandra.lastname, sandra.firstname, sandra.lastname);
 
   page.innerText = dacia.getDescription();
 });

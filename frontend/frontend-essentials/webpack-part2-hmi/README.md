@@ -97,7 +97,7 @@ module.exports = {
 ```
 - A ce stade-ci, lors du lancement de webpack, celui-ci check les règles de codage.
 Si certaines ne sont pas respectée, le code ne compile pas.
-- Pour bénéficier de plus de feedback sur le code, installez l'extension ESLint au sein de 
+- Pour bénéficier de plus de feedback sur le code, installez l'extension **ESLint** au sein de 
 VS Code. Vous ne devez plus attendre la compilation pour avoir du feedback sur votre code, cela 
 se fait dès l'écriture ! Vous avez même des propositions de "Quick fix" !
 - Pour formater votre code, nous vous conseillons d'installer l'extension **Prettier**.
@@ -111,10 +111,17 @@ de single quotes...
 ```
 module.exports = {
   ...require('prettier-airbnb-config'),
-  printWidth: 120
+  printWidth: 120,
+  arrowParens: 'always',
+  bracketSpacing: true,
 };
 ```
+- Concernant le formateur, apparemment le package **prettier-airbnb-config** ne fournit pas une config qui correspond au style guide d'Airbnb. Nous avons du changer les règles au sein de **.prettierrc.js** :
+  - toujours mettre les parenthèses lors d'un unique paramètre via ***arrowParens**.
+  - mettre un espace entre les accolades d'un objet via **bracketSpacing**.
 - Certaines règles d'Airbnb sont difficilement applicables. La 1ère est que sous Windows ou Linux, les sauts à la lignes sont faits différemment. On souhaite laisser cela acceptable. De plus, on souhaite aussi permettre le hoisting des fonctions. Afin de rendre le code plus lisible, on aimerait pouvoir utiliser une fonction, même si ça définition est donnée plus loin dans le script. Nous avons donc assoupli ces deux règles, 'linebreak-style' & 'no-use-before-define', au sein du fichier de configuration du linter **.eslintrc.js**.
+
+- En conclusion, voici tous les packages qui ont été installée : `npm i eslint eslint-config-airbnb-base eslint-webpack-plugin prettier-airbnb-config -D`. Deux fichiers de config ont été rajoutés : **.eslintrc.js** et **.prettierrc.js**, et deux extensions ont été installées dans VS Code : **ESLint** et **Prettier**.
 
 
 ## Conclusion : pourquoi avoir fait tout ça ? 

@@ -6,13 +6,17 @@
  * @param {footerText} footerText
  */
 function setLayout(headerTitle, pageTitle, footerText) {
-  if (headerTitle)
-    document.querySelector("#headerTitle").innerText = headerTitle;
+  if (headerTitle) document.querySelector('#headerTitle').innerText = headerTitle;
   if (pageTitle) {
-    document.querySelector("title").innerText = pageTitle;
-    document.querySelector("#pageTitle").innerText = pageTitle;
+    document.querySelector('title').innerText = pageTitle;
+    document.querySelector('#pageTitle').innerText = pageTitle;
   }
-  if (footerText) document.querySelector("#footerText").innerText = footerText;
+  if (footerText) document.querySelector('#footerText').innerText = footerText;
 }
+
+function setHeaderTitle(headerTitle) {
+  if (headerTitle) document.querySelector('#headerTitle').innerText = headerTitle;
+}
+
 // named export
-export { setLayout };
+export { setLayout, setHeaderTitle };

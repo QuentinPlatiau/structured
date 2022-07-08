@@ -1,45 +1,44 @@
-// load an analog clock
-import { AnalogClock } from "customizable-analog-clock";
-import logo from "../../img/js-logo.png";
-import music from "../../sound/Infecticide-11-Pizza-Spinoza.mp3";
+import sound from '../../sound/Infecticide-11-Pizza-Spinoza.mp3';
 
 const Header = () => {
-  const stopStartSound = () => {
-    const myAudioPlayer = document.querySelector("#audioPlayer");
-
-    if (myAudioPlayer.paused) myAudioPlayer.play();
-    else myAudioPlayer.pause();
-  };
-
-  const header = document.querySelector("header");
-
-  // Create the audio and load the file via webpack file-loader
-  const myPlayer = `
-  <div class="text-center">
-  <audio id="audioPlayer" controls>
-        <source
-          src="${music}"
-          type="audio/mpeg"
-        />
-        Your browser does not support the audio element.
-      </audio>
-      </div>`;
-  // add a wrapper for the clock
-  const clockWrapper = `  <br><br><div 
-id="my-clock"                          
-style="width: 200px; height: 200px;"  
-class="mx-auto"                       
-</div>`;
-
-  header.innerHTML += myPlayer + clockWrapper;
-
-  header.addEventListener("click", stopStartSound);
-
-  // create and attach the clock to the wrapper (#my-clock)
-  const clock = new AnalogClock({
-    htmlElement: "my-clock",
-    showIndicators: true,
-  });
+  renderTitleAndWrapper();
+  renderAudioPlayer();
+  onBodyClick();
 };
+
+function renderTitleAndWrapper() {
+  const header = document.querySelector('header');
+  header.innerHTML = `<h1 class="animate__animated animate__bounce text-center">
+  We love Pizza
+  </h1>
+  <div id="navbarWrapper">
+  </div>
+  `;
+}
+
+function renderAudioPlayer() {
+  const header = document.querySelector('header');
+
+  header.innerHTML += `
+  <div class="text-center">
+    <audio id="audioPlayer" controls autoplay class="mt-3">
+    <source src="${sound}" type="audio/mpeg" />
+    Your browser does not support the audio element.
+    </audio>
+  </div>
+  `;
+}
+
+function onBodyClick() {
+  const body = document.querySelector('body');
+  body.addEventListener('click', startOrStopSound);
+}
+
+function startOrStopSound() {
+  const myAudioPlayer = document.querySelector('#audioPlayer');
+
+  if (myAudioPlayer.paused) myAudioPlayer.play();
+  else myAudioPlayer.pause();
+}
 
 export default Header;

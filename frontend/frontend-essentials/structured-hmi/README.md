@@ -49,10 +49,9 @@ Lors d'un clic sur un élément de la Navbar, on identifie cet élément grâce 
 - Par exemple, pour rendre la page de login, il suffit d'appeler **`LoginPage()`** 
 du module **`/src/Components/Pages/LoginPage`**.
 # Conclusion
-- Nous avons une IHM fonctionnelle. Mais qu'est-ce qui nous manque ?
-- Si nous faisons un refresh de la page, nous perdons l'historique. De plus, nous n'avons pas d'URI spécifiques pour chacune des pages.
-- De plus, il est impossible d'ajouter des opérations de lecture & écriture sur des ressources externes à notre frontend. Pourtant, nous souhaiterions qu'un admin du site puisse ajouter des pizzas, en effacer... Pour ce faire, il est important d'apprendre à développer une Web API. Puis finalement, d'intégrer les opérations offertes par une Web API au sein du frontend.
+- Nous avons une IHM fonctionnelle.
+- Pour l'instant, il n'est pas possible d'ajouter des opérations de lecture & écriture sur des ressources externes à notre IHM. Pourtant, nous souhaiterions qu'un admin du site puisse ajouter des pizzas, en effacer... Pour ce faire, il est important d'apprendre à développer des web services. Puis finalement, nous pourrons intégrer les opérations offertes par nos web services au sein d'une IHM.
 
 # Resources
-- photo de : https://unsplash.com/ (Sahand Hoseini)
+- photo de : https://unsplash.com/ (Sahand Hoseini, pizza sur la planche, Engin Akyurt, pizza au fromage)
 - musique de : https://freemusicarchive.org/music/Infecticide : Infecticide - Chansons Tristes - 11. Infecticide - Pizza Spinoza

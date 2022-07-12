@@ -1,6 +1,6 @@
 import pizzaImage from '../../img/pizza2.jpg';
 import logo from '../../img/js-logo.png';
-import { Redirect } from '../Router/Router';
+import Navigate from '../Router/Navigate';
 
 const Footer = () => {
   const footer = document.querySelector('footer');
@@ -26,6 +26,6 @@ function renderSmallImage(wrapper, url, id) {
 function attachOnPizzaClick() {
   const pizza = document.querySelector('#cheesePizza');
   pizza.addEventListener('click', () => {
-    Redirect('/');
+    Navigate('/');
   });
 }

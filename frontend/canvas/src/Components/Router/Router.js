@@ -1,12 +1,4 @@
-import HomePage from '../Pages/HomePage';
-import LoginPage from '../Pages/LoginPage';
-import RegisterPage from '../Pages/RegisterPage';
-
-const routes = {
-  '/': HomePage,
-  '/login': LoginPage,
-  '/register': RegisterPage,
-};
+import routes from './routes';
 
 const Router = () => {
   onFrontendLoad();

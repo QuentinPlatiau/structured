@@ -1,24 +1,15 @@
 class Car {
-    constructor(brand, model) {
-      this.brand = brand;
-      this.model = model;
-      this._id = Math.random();
-    }
-    get id() {
-      return this._id;
-    }
-    getDescription() {
-      return (
-        "Car's description : " +
-        this.brand +
-        ", " +
-        this.model +
-        " , ID:" +
-        this.id
-      );
-    }
+  constructor(brand, model) {
+    this.brand = brand;
+    this.model = model;
+    this.id = Math.random();
   }
-  
-  let dacia = new Car("Dacia", "Sandero");
 
-  console.log(dacia.getDescription());
+  getDescription() {
+    return `Car's description : ${this.brand}, ${this.model} , ID:${this.id}`;
+  }
+}
+
+const dacia = new Car('Dacia', 'Sandero');
+
+console.log( dacia.getDescription() );

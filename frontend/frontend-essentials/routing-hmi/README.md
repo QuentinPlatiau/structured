@@ -37,7 +37,7 @@ const routes = {
 - De plus, il faut appeler le `Router` au sein de `index.js`
 
 ## Test de la redirection
-- On souhaite faire appel à la fonction `Redirect` du `Router` pour rediriger vers la `HomePage` quand on passe sur la pizza au fromage qui se trouve dans le footer. `Footer.js` a donc été mis à jour.
+- On souhaite faire appel à la fonction `Navigate` présente dans `/src/Components/Router/Navigate.js/` pour rediriger vers la `HomePage` quand on passe sur la pizza au fromage qui se trouve dans le footer. `Footer.js` a donc été mis à jour.
 
 # Conclusion
 - Nous avons une IHM fonctionnelle. Mais qu'est-ce qui nous manque ?

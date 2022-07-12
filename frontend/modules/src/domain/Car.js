@@ -12,5 +12,4 @@ class Car {
   }
 }
 
-// default export
 export default Car;

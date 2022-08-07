@@ -1,5 +1,5 @@
 {
-  "name": "restful-api-essentials-step2",
+  "name": "restful-api-essentials-persistence",
   "description": "RESTful API : Gestion de la persistance des données dans un fichier .json",
   "version": "0.0.0",
   "private": true,

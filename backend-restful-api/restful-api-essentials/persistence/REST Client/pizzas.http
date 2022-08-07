@@ -3,11 +3,21 @@
 ### Read all pizzas
 GET http://localhost:3000/pizzas
 
+### Read all pizzas with File variable
+@baseUrl = http://localhost:3000
+GET {{baseUrl}}/pizzas
+
+### Read all pizzas sorted by title (ascending)
+GET {{baseUrl}}/pizzas/?order=+title
+
+### Read all pizzas sorted by title (descending)
+GET {{baseUrl}}/pizzas/?order=-title
+
 ### Read pizza identified by 2
-GET http://localhost:3000/pizzas/2
+GET {{baseUrl}}/pizzas/2
 
 ### Create a pizza
-POST http://localhost:3000/pizzas
+POST {{baseUrl}}/pizzas
 Content-Type: application/json
 
 {
@@ -15,25 +25,35 @@ Content-Type: application/json
     "content":"Epinards, Brocolis, Olives vertes, Basilic"
 }
 
-### Update the pizza identified by 2
-PUT http://localhost:3000/pizzas/2
+### Delete pizza identified by 2
+DELETE {{baseUrl}}/pizzas/2
+
+### Update the pizza identified by 6
+PATCH {{baseUrl}}/pizzas/6
 Content-Type: application/json
 
 {
     "title":"Magic Green 2"
 }
 
-### Delete pizza identified by 2
-DELETE http://localhost:3000/pizzas/2
+
 
 
 ######### ERROR OPERATION  ###########
 
 ### Read pizza which does not exists
-GET http://localhost:3000/pizzas/100
+GET {{baseUrl}}/pizzas/100
+
+### Create a pizza which lacks a property
+POST {{baseUrl}}/pizzas
+Content-Type: application/json
+
+{
+    "content":"Epinards, Brocolis, Olives vertes, Basilic"
+}
 
 ### Create a pizza without info for a property
-POST http://localhost:3000/pizzas
+POST {{baseUrl}}/pizzas
 Content-Type: application/json
 
 {
@@ -42,7 +62,7 @@ Content-Type: application/json
 }
 
 ### Update for a pizza which does not exist
-PUT http://localhost:3000/pizzas/200
+PUT {{baseUrl}}/pizzas/200
 Content-Type: application/json
 
 {
@@ -50,10 +70,10 @@ Content-Type: application/json
 }
 
 ### Update for a pizza which does not provide any info for a property
-PUT http://localhost:3000/pizzas/1
+PUT {{baseUrl}}/pizzas/1
 Content-Type: application/json
 
 {
     "title":"Magic Green 2",
-    "content":"1"
+    "content":""
 }

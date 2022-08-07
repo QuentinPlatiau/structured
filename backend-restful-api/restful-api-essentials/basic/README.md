@@ -1,4 +1,4 @@
-# Création d’une RESTful API pour une pizzeria : basic : gestion de données non persistantes, code peu structuré
+# Création d’une RESTful API pour une pizzeria : api-basic : gestion de données non persistantes, code peu structuré
 ## How to ? Création de l'application sans authentification
 - A l'aide d'un générateur d'application, création d'une application Express, sans vues, dans le répertoire de projet `/basic` (NB : c'est lors de la création d'une MPA que les vues sont utilisées) : `npx express-generator --no-view basic`
 NB : le `--no-view` permet de ne pas avoir à effacer certains répertoires inutiles à une SPA comme `/views`.

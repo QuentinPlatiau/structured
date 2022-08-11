@@ -3,7 +3,7 @@
 ## Utilisation des outils de développement offerts par un boilerplate
 - à l'aide du boilerplate du cours 
 [basic-api-boilerplate](https://github.com/e-vinci/basic-api-boilerplate), 
-cette application **fat-model** a été créée.
+cette application **fat-model** a été initialisée.
 
 ## How to ? Refactoring du code
 - On souhaite pouvoir facilement remplacer la couche d’accès aux données (accès à un fichier .json actuellement) sans changer

@@ -1,11 +1,12 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ESLintPlugin = require('eslint-webpack-plugin');
 
 module.exports = {
   mode: 'none',
   entry: './src/index.js',
   output: {
-    path: __dirname + '/dist',
+    path: `${__dirname}/dist`,
     filename: 'bundle.js',
     publicPath: '/',
   },
@@ -32,16 +33,16 @@ module.exports = {
       },
 
       // emits a separate file and exports the URLs => works for import in JS and url in CSS
-      // default condition: a file with size less than 8kb will be treated as a inline module type and resource module type otherwise
+      // default condition: a file with size less than 8kb will be treated as a inline
+      // module type and resource module type otherwise
       {
         test: /\.(png|jpg|gif|svg|mp3|mpe?g)$/,
         type: 'asset/resource',
       },
 
-      /*
-      // automatically chooses between exporting a data URI and emitting a separate file.
+      /* automatically chooses between exporting a data URI and emitting a separate file.
       {
-        test: /\.(png|jpg|gif|svg|mp3|mpe?g)$/,        
+        test: /\.(png|jpg|gif|svg|mp3|mpe?g)$/,
         type : 'asset',
       },  */
 
@@ -76,5 +77,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/index.html',
     }),
+    new ESLintPlugin(),
   ],
 };

@@ -1,7 +1,7 @@
 {
-  "name": "frontend-essentials-jwt-fetch",
+  "name": "frontend-essentials-web-storage",
   "version": "1.0.0",
-  "description": "SPA : Utilisation de JWT au sein d'une IHM",
+  "description": "SPA : Sauvegarde du token et du username dans le localStorage",
   "scripts": {
     "dev": "webpack --mode development",
     "build": "webpack --mode production",

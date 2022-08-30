@@ -1,4 +1,4 @@
-# Création d’un frontend pour une pizzeria : modern-dynamic-hmi : conversion d'un frontend moderne utilisant du CSS vers Bootstrap
+# Création d’un frontend pour une pizzeria : modern-dynamic-hmi : Génération dynamique de l'HTML d'une IHM
 
 ## Démarrer votre application
 - Ce tutoriel est la suite de la partie **modern-esthetic-hmi** où nous allons générer de l'HTML dynamiquement.

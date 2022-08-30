@@ -62,11 +62,16 @@ const HomePage = () => {
     canvasContext.fillStyle = DEFAULT_COLOR;
 
     for (let i = 0; i < EXPECTED_RECT_COUNT; i += 1) {
-      canvasContext.fillRect(Math.random() * mainWidth, Math.random() * mainHeight, 20, 20);
+      canvasContext.fillRect(
+        Math.random() * mainWidth,
+        Math.random() * mainHeight,
+        DEFAULT_SHAPE_SIDE,
+        DEFAULT_SHAPE_SIDE,
+      );
     }
   }
 
-  function drawAlwaysFullRectanglesAtRandomLocations() {
+  /* function drawAlwaysFullRectanglesAtRandomLocations() {
     canvasContext.fillStyle = DEFAULT_COLOR;
 
     for (let i = 0; i < EXPECTED_RECT_COUNT; i += 1) {
@@ -84,7 +89,7 @@ const HomePage = () => {
 
       canvasContext.fillRect(expectedX, expectedY, DEFAULT_SHAPE_SIDE, DEFAULT_SHAPE_SIDE);
     }
-  }
+  } */
 };
 
 export default HomePage;

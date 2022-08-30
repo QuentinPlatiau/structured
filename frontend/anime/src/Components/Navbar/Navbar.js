@@ -13,7 +13,7 @@ const Navbar = () => {
   const navbar = `
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Stromboscope</a>
+          <a class="navbar-brand" href="#">anime.js</a>
           <button
             class="navbar-toggler"
             type="button"

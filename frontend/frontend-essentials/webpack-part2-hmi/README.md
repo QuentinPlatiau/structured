@@ -136,15 +136,10 @@ module.exports = {
 };
 ```
 
-- A ce stade-ci, lors du lancement de webpack, celui-ci check les règles de codage. Si certaines ne sont pas respectée,
-  le code ne compile pas.
-- Pour bénéficier de plus de feedback sur le code, installez l'extension **ESLint** au sein de VS Code. Vous ne devez
-  plus attendre la compilation pour avoir du feedback sur votre code, cela se fait dès l'écriture ! Vous avez même des
-  propositions de "Quick fix" !
+- A ce stade-ci, lors du lancement de webpack, celui-ci check les règles de codage. Si certaines ne sont pas respectée, le code ne compile pas.
+- Pour bénéficier de plus de feedback sur le code, installez l'extension **ESLint** au sein de VS Code. Vous ne devez plus attendre la compilation pour avoir du feedback sur votre code, cela se fait dès l'écriture ! Vous avez même des  propositions de "Quick fix" !
 - Pour formater votre code, nous vous conseillons d'installer l'extension **Prettier**.
-- Vous souhaitez reformater votre code en accord avec le linter ? Par défaut, l'extension Prettier de VS Code n'est pas
-  configuré pour appliquer le style d'Airbnb. Il y a notamment des soucis avec les Strings : tout devient des double
-  quotes au lieu de single quotes...
+- Vous souhaitez reformater votre code en accord avec le linter ? Par défaut, l'extension Prettier de VS Code n'est pas configuré pour appliquer le style d'Airbnb. Il y a notamment des soucis avec les Strings : tout devient des double quotes au lieu de single quotes...
 - Pour configurer prettier basé sur Airbnb JS style guide :
   - installer un package fournissant les paramètres de config : `npm i prettier-airbnb-config -D`
   - utiliser ces paramètres de configuration au sein d'un fichier `.prettierrc.js` :
@@ -158,13 +153,15 @@ module.exports = {
 };
 ```
 
-- Concernant le formateur, apparemment le package **prettier-airbnb-config** ne fournit pas une config qui correspond au
-  style guide d'Airbnb. Nous avons du changer les règles au sein de **.prettierrc.js** :
+- Concernant le formateur, apparemment le package **prettier-airbnb-config** ne fournit pas une config qui correspond au style guide d'Airbnb. Nous avons du changer les règles au sein de **.prettierrc.js** :
   - - tenter de ne pas créer de lignes de plus de 100 caractères via **printWidth**
   - toujours mettre les parenthèses lors d'un unique paramètre via **\*arrowParens**.
   - mettre un espace entre les accolades d'un objet via **bracketSpacing**.
   - toujours ajouter une virgule (même dans les fonctions quand multilignes, pour le dernier paramètre) :
     **trailingComma**.
+- Toujours concernant le formateur, celui-ci fait du bon travail, mais cela ne colle pas toujours avec ce que le linter impose. Pour désactiver les règles qui entrent en conflit avec Prettier :
+  - ce package a été installé : `npm i -D eslint-config-prettier`.
+  - la config du linter a été changée dans **.estlintrc.js** en ajoutant **prettier** à la fin de l'array "extends" pour qu'il puisse remplacer d'autres configurations.
 - Certaines règles d'Airbnb sont difficilement applicables. La 1ère est que sous Windows ou Linux, les sauts à la lignes
   sont faits différemment. On souhaite laisser cela acceptable. De plus, on souhaite aussi permettre le hoisting des
   fonctions. Afin de rendre le code plus lisible, on aimerait pouvoir utiliser une fonction, même si ça définition est

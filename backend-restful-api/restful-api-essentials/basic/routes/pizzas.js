@@ -66,8 +66,8 @@ router.post('/', (req, res) => {
   if (!title || !content) return res.sendStatus(400); // error code '400 Bad request'
 
   const lastItemIndex = MENU?.length !== 0 ? MENU.length - 1 : undefined;
-  const lastId = lastItemIndex ? MENU[lastItemIndex]?.id : undefined;
-  const nextId = lastItemIndex !== 0 ? lastId + 1 : 1;
+  const lastId = lastItemIndex !== undefined ? MENU[lastItemIndex]?.id : 0;
+  const nextId = lastId + 1;
 
   const newPizza = {
     id: nextId,

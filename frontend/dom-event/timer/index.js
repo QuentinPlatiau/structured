@@ -4,7 +4,7 @@ const btn2 = document.querySelector("#myBtn2");
 btn1.addEventListener("click", delayedAlert);
 btn2.addEventListener("click", clearAlert);
 
-var timeoutId;
+let timeoutID;
 const delayInSeconds = 2;
 const delayInMiliSeconds = delayInSeconds * 1000;
 
